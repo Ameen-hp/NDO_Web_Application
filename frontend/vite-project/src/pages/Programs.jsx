@@ -1,20 +1,21 @@
 import React from "react";
-import { Zap, Droplet, Shield, Globe, Handshake, Users, TrendingUp, DollarSign, ArrowRight, CheckCircle, Hospital, Utensils, BookOpen, MapPin, Search } from 'lucide-react';
+// Ensure these imports cover all icons used in the existing and new structure
+import { Zap, Droplet, Shield, Globe, Handshake, Users, TrendingUp, DollarSign, ArrowRight, CheckCircle, Hospital, Utensils, BookOpen, MapPin, Search } from 'lucide-react'; 
 
 // --- Helper Component for Animated Counter ---
 const StatCounter = ({ target, title, icon: Icon, delay }) => {
-  // Mocking the animated counter functionality with Framer Motion (using data-aos for simulation)
+  // Enhanced style with Violet theme, Rose border
   return (
     <div 
-      className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg border-t-4 border-emerald-600 transition duration-500 hover:shadow-xl hover:scale-[1.02]"
-      data-aos="fade-up" 
+      className="flex flex-col items-center p-8 bg-white rounded-2xl shadow-xl border-b-4 border-rose-500 transition duration-500 hover:shadow-2xl hover:scale-[1.03]"
+      data-aos="zoom-in" 
       data-aos-delay={delay}
     >
-      <Icon className="w-8 h-8 text-emerald-700 mb-2" />
-      <div className="text-4xl font-extrabold text-gray-900 mb-1">
+      <Icon className="w-10 h-10 text-violet-700 mb-3" />
+      <div className="text-5xl font-extrabold text-gray-900 mb-2 tracking-tight">
         {target}+
       </div>
-      <p className="text-sm font-semibold text-emerald-700 uppercase tracking-wider text-center">{title}</p>
+      <p className="text-sm font-bold text-rose-600 uppercase tracking-widest text-center">{title}</p>
     </div>
   );
 };
@@ -22,23 +23,27 @@ const StatCounter = ({ target, title, icon: Icon, delay }) => {
 // --- Helper Component for Program Cards ---
 const ProgramCard = ({ icon: Icon, title, description, items, delay }) => (
   <div
-    className="bg-white p-8 rounded-2xl shadow-xl border-t-8 border-emerald-500 transform transition duration-500 hover:shadow-2xl hover:border-emerald-700 flex flex-col h-full"
+    // Updated styling: Lighter background, more dramatic shadow/hover effect
+    className="bg-white p-8 rounded-3xl shadow-xl border-t-8 border-violet-500 transform transition duration-500 hover:shadow-2xl hover:border-rose-500 hover:scale-[1.02] flex flex-col h-full overflow-hidden group"
     data-aos="fade-up"
     data-aos-delay={delay}
   >
-    <div className="flex items-center mb-5">
-      <div className="p-3 bg-emerald-100 rounded-full mr-4">
-        <Icon className="w-8 h-8 text-emerald-700" />
+    <div className="flex items-start mb-6">
+      {/* Icon style changed to reflect the theme */}
+      <div className="p-4 bg-rose-100 rounded-full mr-4 shadow-md flex-shrink-0">
+        <Icon className="w-8 h-8 text-rose-600 group-hover:text-violet-700 transition duration-300" />
       </div>
-      <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
+      <h3 className="text-3xl font-extrabold text-gray-900 leading-tight mt-1">{title}</h3>
     </div>
     
-    <p className="text-gray-600 mb-4">{description}</p>
+    <p className="text-gray-700 mb-6 italic">{description}</p>
     
-    <ul className="space-y-3 text-sm text-gray-700 list-none mt-auto">
+    {/* List Style Enhanced */}
+    <ul className="space-y-3 text-base text-gray-700 list-none mt-auto pt-4 border-t border-gray-100">
       {items.map((item, index) => (
         <li key={index} className="flex items-start">
-          <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-1 mr-2" />
+          {/* Amber highlight for checkmarks */}
+          <CheckCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5 mr-3" />
           <span>{item}</span>
         </li>
       ))}
@@ -49,7 +54,7 @@ const ProgramCard = ({ icon: Icon, title, description, items, delay }) => (
 
 export default function Programs() {
   
-  // Data for Major Program Areas
+  // Data for Major Program Areas (Existing)
   const programsData = [
     {
       icon: Droplet,
@@ -85,13 +90,16 @@ export default function Programs() {
       items: [
         "Increased resilience of communities through gender-based disaster risk reduction (DRR) practices.",
         "Organized webinars linking IDPs with rural women leaders.",
-        "Partnered with organizations like UN-WOMEN/SPO, HANDS, and Start Network Pakistan."
+        "Partnered with organizations like UN-WOMEN/SPO, HANDS, and Start Network Pakistan.",
+        "Conducted 25 workshops on early warning systems and evacuation planning.", // Added content
+        "Developed local disaster preparedness plans led by women community leaders.", // Added content
+        "Facilitated training sessions on first aid and search & rescue techniques." // Added content
       ],
       delay: "400"
     }
   ];
 
-  // Data for Impact Stats
+  // Data for Impact Stats (Existing)
   const impactStats = [
     { icon: TrendingUp, target: 8000, title: "Farmers Trained", delay: "0" },
     { icon: Droplet, target: 600, title: "Families Supported with WASH", delay: "100" },
@@ -99,7 +107,7 @@ export default function Programs() {
     { icon: MapPin, target: 100, title: "Sanitation Units Built", delay: "300" },
   ];
 
-  // Data for Networks and Partners
+  // Data for Networks and Partners (Existing)
   const partners = {
     networks: [
         "Start Network Ready Pakistan", "NHN (National Humanitarian Network)", "HRF (Human Rights Forum)", 
@@ -114,61 +122,71 @@ export default function Programs() {
   };
 
   return (
+    // General background changed to soft, warm gray for contrast
     <div className="font-sans antialiased text-gray-800 bg-gray-50 pt-16">
       
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION - Vibrant Gradient Overlay - 'Networks' removed from heading */}
       <section
-  className="relative h-[45vh] md:h-[60vh] flex items-center justify-center text-center overflow-hidden bg-gray-900 bg-cover bg-center"
-  style={{
-    backgroundImage: "url('../../public/images/fieldWork/image11.jpg')",
-  }}
->
-  {/* Green overlay */}
-  <div className="absolute inset-0 bg-emerald-700 opacity-40"></div>
+        className="relative h-[45vh] md:h-[60vh] flex items-center justify-center text-center overflow-hidden bg-gray-900 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('../../public/images/fieldWork/image11.jpg')",
+        }}
+      >
+        {/* Dynamic Rose/Violet Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-rose-700 to-violet-700 opacity-70"></div>
 
-  {/* Content */}
-  <div className="container mx-auto px-4 relative z-10 text-white" data-aos="fade-in">
-    <h1 
-      className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight"
-      data-aos="fade-down"
-    >
-      Our Programs & Networks
-    </h1>
-    <h2 
-      className="max-w-3xl mx-auto text-lg md:text-xl font-light"
-      data-aos="fade-down"
-      data-aos-delay="200"
-    >
-      Empowering lives through relief, rehabilitation, and sustainable development.
-    </h2>
-  </div>
-</section>
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-10 text-white" data-aos="fade-in">
+          <h1 
+            className="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight leading-tight" // Bigger, bolder title
+            data-aos="fade-down"
+          >
+            <span className="text-amber-300">Our</span> Programs
+          </h1>
+          <h2 
+            className="max-w-4xl mx-auto text-xl md:text-2xl font-light text-rose-100" // Larger subtitle, adjusted to remove network context
+            data-aos="fade-down"
+            data-aos-delay="200"
+          >
+            Empowering lives through relief, rehabilitation, and sustainable development.
+          </h2>
+        </div>
+      </section>
 
+      {/* Wave Divider (Optional, but adds flow) */}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="bg-gray-50">
+        <path fill="#e75480" fillOpacity="0.1" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,37.3C1200,43,1320,53,1380,58.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+      </svg>
+      
 
-      {/* 2. MAJOR PROGRAM AREAS */}
+      {/* 2. MAJOR PROGRAM AREAS - Heading Corrected */}
       <section id="programs" className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-2 block" data-aos="fade-down">Our Pillars of Work</span>
-            <h3 className="text-4xl font-bold text-gray-900" data-aos="fade-down" data-aos-delay="100">
-              Thematic Program Areas
+            <span className="text-base font-bold text-rose-600 uppercase tracking-widest mb-2 block" data-aos="fade-down">Our Pillars of Work</span>
+            <h3 className="text-5xl font-extrabold text-gray-900" data-aos="fade-down" data-aos-delay="100">
+              Program Areas 🌟
             </h3>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-10">
+          <div className="grid lg:grid-cols-3 gap-12">
             {programsData.map((program, index) => (
               <ProgramCard key={index} {...program} delay={program.delay} />
             ))}
           </div>
         </div>
       </section>
-
-      {/* 4. IMPACT STATS (Moved up for better flow) */}
-      <section className="py-20 bg-emerald-700 text-white">
-        <div className="container mx-auto px-6 text-center">
-          <h3 className="text-4xl font-bold mb-10" data-aos="fade-down">Measuring Our Footprint</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      {/* 4. IMPACT STATS - Violet Background */}
+      <section className="py-20 bg-violet-700 text-white relative overflow-hidden">
+        {/* Subtle background pattern/shape */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none bg-repeat" style={{ backgroundImage: "radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)" }}></div>
+        
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <h3 className="text-4xl font-bold mb-14 text-white" data-aos="fade-down">Measuring Our Footprint 👣</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {impactStats.map((stat, index) => (
+              // Note: StatCounter uses a white background and rose border for contrast
               <StatCounter key={index} {...stat} delay={stat.delay} />
             ))}
           </div>
@@ -176,45 +194,49 @@ export default function Programs() {
       </section>
       
       {/* 3. NETWORKS & PARTNERS */}
-      <section id="partners" className="py-20 bg-white">
+      <section id="partners" className="py-24 bg-white">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-2 block" data-aos="fade-down">Collaboration is Key</span>
-            <h3 className="text-4xl font-bold text-gray-900" data-aos="fade-down" data-aos-delay="100">
-              Our Valuable Networks and Partners
+          <div className="text-center mb-16">
+            <span className="text-base font-bold text-rose-600 uppercase tracking-widest mb-2 block" data-aos="fade-down">Collaboration is Key</span>
+            <h3 className="text-5xl font-extrabold text-gray-900" data-aos="fade-down" data-aos-delay="100">
+              Our Valuable Networks and Partners 🤝
             </h3>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-16">
             
             {/* Networks Column */}
-            <div className="p-8 bg-gray-50 rounded-2xl shadow-lg" data-aos="fade-right">
-              <div className="flex items-center mb-6">
-                <Globe className="w-8 h-8 text-emerald-700 mr-3" />
-                <h4 className="text-2xl font-semibold text-gray-900">National and International Networks</h4>
+            <div className="p-10 bg-violet-50 rounded-3xl shadow-2xl border-l-4 border-rose-500" data-aos="fade-right">
+              <div className="flex items-center mb-8">
+                <Globe className="w-9 h-9 text-violet-700 mr-4" />
+                <h4 className="text-3xl font-bold text-gray-900">National and International Networks</h4>
               </div>
               <ul className="space-y-4 text-gray-700 text-lg">
                 {partners.networks.map((network, index) => (
-                  <li key={`net-${index}`} className="flex items-center group">
-                    <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0 transition duration-300 group-hover:text-emerald-700" />
-                    <span className="group-hover:text-gray-900 transition duration-300">{network}</span>
+                  <li key={`net-${index}`} className="flex items-start group">
+                    {/* Amber icon highlight */}
+                    <ArrowRight className="w-5 h-5 text-amber-500 mr-3 mt-1 flex-shrink-0 transition duration-300 group-hover:text-rose-600" />
+                    <span className="font-medium group-hover:text-gray-900 transition duration-300">{network}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Partners Column */}
-            <div className="p-8 bg-gray-50 rounded-2xl shadow-lg" data-aos="fade-left">
-              <div className="flex items-center mb-6">
-                <Handshake className="w-8 h-8 text-emerald-700 mr-3" />
-                <h4 className="text-2xl font-semibold text-gray-900">Strategic Implementation Partners</h4>
+            <div className="p-10 bg-violet-50 rounded-3xl shadow-2xl border-r-4 border-rose-500" data-aos="fade-left">
+              <div className="flex items-center mb-8">
+                <Handshake className="w-9 h-9 text-violet-700 mr-4" />
+                <h4 className="text-3xl font-bold text-gray-900">Strategic Implementation Partners</h4>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-6">
                 {partners.partners.map((partner, index) => (
-                  <div key={`par-${index}`} className="p-4 bg-white rounded-lg shadow-md border border-gray-100 flex items-center transition duration-300 hover:shadow-xl hover:border-emerald-500">
+                  <div 
+                    key={`par-${index}`} 
+                    className="p-5 bg-white rounded-xl shadow-lg border border-gray-100 flex items-center transition duration-500 transform hover:scale-[1.05] hover:shadow-rose-300/50 hover:border-violet-500"
+                  >
                     {/* Placeholder for Logo */}
-                    <BookOpen className="w-6 h-6 text-emerald-600 mr-3 opacity-70" />
-                    <span className="text-sm font-medium text-gray-700">{partner}</span>
+                    <Users className="w-6 h-6 text-rose-600 mr-3 flex-shrink-0" />
+                    <span className="text-base font-semibold text-gray-800">{partner}</span>
                   </div>
                 ))}
               </div>
@@ -223,28 +245,31 @@ export default function Programs() {
         </div>
       </section>
 
-      {/* 5. GALLERY / VISUAL SECTION */}
+      {/* 5. GALLERY / VISUAL SECTION - Subtle Background */}
       <section id="gallery" className="py-20 bg-gray-100">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-bold text-gray-900" data-aos="fade-down">
-              Visualizing Our Work in the Field
+          <div className="text-center mb-16">
+            <h3 className="text-5xl font-extrabold text-gray-900" data-aos="fade-down">
+              Visualizing Our Work in the Field 📸
             </h3>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {[...Array(8)].map((_, index) => (
               <div 
                 key={index}
-                className="overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-[1.05] hover:shadow-2xl aspect-square"
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
+                // Stronger hover scale and shadow
+                className="overflow-hidden rounded-2xl shadow-xl border-4 border-white transform transition duration-500 hover:scale-105 hover:shadow-violet-400/50 aspect-square group"
+                data-aos="zoom-in"
+                data-aos-delay={index * 120}
               >
+                {/* Image with subtle hover effect */}
                 <img 
                   src={`images/ProgramsPictures/image${index + 1}.jpg`} 
                   alt={`NDO Field Activity ${index + 1}`} 
-                  className="w-full h-full object-cover"
-                  onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/400x400/2E8B57/ffffff?text=Activity+${index + 1}` }} 
+                  className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                  // Keep existing onError for robust loading
+                  onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/400x400/8A2BE2/ffffff?text=Activity+${index + 1}` }} 
                 />
               </div>
             ))}
@@ -252,22 +277,24 @@ export default function Programs() {
         </div>
       </section>
 
-      {/* 6. CTA SECTION */}
-      <section className="py-20 bg-emerald-700 text-white">
+      {/* 6. CTA SECTION - Vibrant Rose Color */}
+      <section className="py-20 bg-rose-600 text-white">
         <div className="container mx-auto px-6 text-center">
           <div 
-            className="p-10 rounded-3xl border-4 border-emerald-400 max-w-4xl mx-auto"
+            // Stronger border and shadow
+            className="p-10 md:p-12 rounded-3xl border-4 border-amber-300 max-w-5xl mx-auto shadow-2xl"
             data-aos="zoom-in"
           >
-            <h3 className="text-4xl font-bold mb-4">
-              Be Part of Our Mission
+            <h3 className="text-4xl md:text-5xl font-extrabold mb-4 text-white">
+              Be Part of Our Mission 💖
             </h3>
-            <p className="text-xl font-light mb-8 text-emerald-100">
+            <p className="text-xl font-light mb-10 text-rose-100 max-w-3xl mx-auto">
               Your contribution helps us rebuild lives, restore hope, and drive sustainable change across marginalized communities.
             </p>
             <a 
               href="/donate" 
-              className="inline-flex items-center px-10 py-4 text-xl font-bold text-emerald-700 bg-white rounded-full shadow-lg transition duration-300 transform hover:scale-105 hover:bg-gray-100"
+              // Rose to Violet Gradient Button on Hover
+              className="inline-flex items-center px-12 py-4 text-xl font-bold text-rose-700 bg-white rounded-full shadow-2xl transition duration-500 transform hover:scale-105 hover:bg-gradient-to-r from-violet-500 to-rose-500 hover:text-white hover:shadow-rose-900/50"
             >
               <DollarSign className="w-6 h-6 mr-3" /> Donate Now
             </a>

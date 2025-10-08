@@ -4,7 +4,6 @@ import Footer from "./components/Footer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 // import UserDashboard from "./pages/UserDashboard";
-import HostDashboard from "./pages/HostDashboard";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Networks from "./pages/Networks";
@@ -12,7 +11,11 @@ import Programs from "./pages/Programs";
 // import Approach from "./pages/Approach";
 // import Donate from "./pages/Donates";
 import Contact from "./pages/ContactDonate";
-import Gallery from "./pages/Gallery";
+import Gallery from "./pages/Gallery"
+// hostDashBoard
+import HostProjectForm from "./pages/HostProjectForm";
+import HostProjects from "./pages/HostProjects";
+import UserQueries from "./pages/UserQueries";
 
 function App() {
   return (
@@ -29,7 +32,12 @@ function App() {
         {/* <Route path="/donate" element={<Donate/>}> </Route> */}
         <Route path="/gallery" element={<Gallery/>}></Route>
         <Route path="/contact" element={<Contact/>}></Route>
-        <Route path="/host" element={<HostDashboard />} />
+        <Route path="/hostFormPage" element={<HostProjectForm
+         />} />
+         <Route path="/hostProjects" element={<HostProjects
+         />} />
+         <Route path="/UserQueries" element={<UserQueries
+         />} />
       </Routes>
       <Footer />
     </BrowserRouter>
