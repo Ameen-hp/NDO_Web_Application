@@ -19,14 +19,24 @@ const __dirname = path.dirname(__filename);
 
 
 
+import cors from "cors";
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://129.154.242.48:5173",
+  "http://129.154.242.48"
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",           // for local testing
-      "http://129.154.242.48:5173",      // your deployed frontend
-      "http://129.154.242.48"            // just in case you host frontend without port
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
