@@ -21,7 +21,7 @@ const __dirname = path.dirname(__filename);
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", 
+      "http://localhost:5173",
       "http://129.154.242.48:5173"
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
