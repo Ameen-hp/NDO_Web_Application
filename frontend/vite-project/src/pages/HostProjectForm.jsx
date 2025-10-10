@@ -4,7 +4,7 @@ import {
     Tag, FileText, LayoutList, Calendar, Image, Upload, CheckCircle, XCircle 
 } from "lucide-react";
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = import.meta.env.VITE_API_URL;
 
 // --- Custom Input Field Component ---
 const FormInput = ({ Icon, ...props }) => {

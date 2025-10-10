@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight, Users, Eye } from "lucide-react";
 
 // DO NOT CHANGE: Backend URL constant
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL=import.meta.env.VITE_API_URL;
+console.log("BACKEND_URL =", import.meta.env.VITE_API_URL);
 
 // --- Helper Component for Lightbox (Modal) ---
 const Lightbox = ({ project, onClose }) => {
