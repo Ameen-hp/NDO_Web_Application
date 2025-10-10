@@ -19,7 +19,6 @@ const __dirname = path.dirname(__filename);
 
 
 
-import cors from "cors";
 
 const allowedOrigins = [
   "http://localhost:5173",
