@@ -306,7 +306,7 @@ export default function ContactDonate() {
                     data-aos="fade-right"
                 >
                     <img 
-                        src="https://placehold.co/600x600/E75480/ffffff?text=Empowerment+Image" 
+                        src="images/empowerment/Empowerment.jpg" 
                         alt="Image of women or children helped by NDO" 
                         className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
                         onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/600x600/E75480/ffffff?text=Empowerment+Image" }} 

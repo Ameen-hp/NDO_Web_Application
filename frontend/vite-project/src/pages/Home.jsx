@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Droplet, HeartHandshake, School, User, ChevronRight, Scale, Users, CheckCircle, Banknote, MapPin } from 'lucide-react';
 
 // Placeholder image URL for the about section
-const image38 = "https://images.unsplash.com/photo-1542810634-71277d95ae35?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const image38 = "images/image38.jpg";
 
 // --- Custom Components/Placeholders ---
 const ImpactCounter = ({ number, title, icon: Icon }) => (
@@ -134,9 +134,9 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-tr from-rose-500/20 to-violet-500/10 transition duration-500 group-hover:bg-rose-500/10"></div>
                 </div>
               </div>
-              <div className="absolute bottom-0 right-0 p-6 bg-white rounded-xl shadow-2xl translate-x-4 translate-y-4 border-b-4 border-amber-400 transform group-hover:translate-x-6 group-hover:translate-y-6 transition duration-500">
+              {/* <div className="absolute bottom-0 right-0 p-6 bg-white rounded-xl shadow-2xl translate-x-4 translate-y-4 border-b-4 border-amber-400 transform group-hover:translate-x-6 group-hover:translate-y-6 transition duration-500">
                 <p className="text-xl font-bold text-rose-500">Woman-Led, Community-Focused</p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -226,13 +226,13 @@ export default function Home() {
           <h2 className="text-4xl font-extrabold text-violet-700 mb-12" data-aos="fade-up">Our Trusted Network & Partners</h2>
           
           <div className="grid grid-cols-3 md:grid-cols-5 gap-y-12 gap-x-6 justify-items-center opacity-90" data-aos="fade-up" data-aos-delay="200">
-            {["WaterAid Pakistan", "HANDS", "SPO", "TRDP", "Start Network", "NHN", "PPCHI", "AASHA Pakistan", "HRF"].map((name, index) => (
+            {["WaterAid-Pakistan", "HANDS", "SPO", "TRDP", "Start-Network", "NHN", "PPHI", "AASHA-Pakistan", "HRF","Muslim-Hands","GSSEF","CDF","HI"].map((name, index) => (
               <div 
                 key={index} 
                 className="flex flex-col items-center p-4 bg-white rounded-xl shadow-lg transform hover:scale-[1.05] transition duration-300"
               >
                 <img 
-                  src={`https://via.placeholder.com/80?text=${name.split(' ')[0]}`} 
+                  src={`images/Networks/${name.split(' ')[0]}.jpeg`} 
                   alt={name} 
                   className="w-20 h-20 object-contain mb-2" 
                 />

@@ -1,90 +1,137 @@
-import { useState } from "react";
-import api from "../utils/api";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { LogIn, Mail, Lock, Loader2, XCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import api from "../utils/api";
 import { useAuth } from "../contexts/AuthContext";
-import { LogIn, Mail, Lock } from 'lucide-react'; // Importing icons
 
 function Login() {
-  // ⛔️ DO NOT CHANGE: State and hooks are preserved
   const [form, setForm] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { setUser } = useAuth();
 
-  // ⛔️ DO NOT CHANGE: handleLogin function is preserved
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(null), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
   const handleLogin = async () => {
+    setError(null);
+    setLoading(true);
+
     try {
       const res = await api.post("/auth/login", form);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-
       setUser(res.data.user);
-
-      if (res.data.user.userType === "host") navigate("/host");
+      if (res.data.user.userType === "host") navigate("/hostFormPage");
       else navigate("/home");
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
+      setError(err.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    // Centered container with full height and subtle background
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 sm:p-6">
-
-      {/* Attractive Login Card */}
-      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-gray-100 transform transition-all duration-300 hover:shadow-3xl">
-
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-violet-50 to-amber-50 flex items-center justify-center p-3 sm:p-4 font-inter mt-10">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-sm bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-2xl border border-white/50 space-y-4 transition-all duration-500"
+      >
         {/* Header */}
-        <div className="text-center mb-8">
-          <LogIn className="w-12 h-12 mx-auto text-blue-600 mb-3" />
-          <h2 className="text-3xl font-extrabold text-gray-900">
-            Welcome Back!
+        <div className="text-center">
+          <div className="w-12 h-12 rounded-full border-4 border-amber-300 mx-auto mb-3 flex items-center justify-center bg-violet-100/50">
+            <LogIn className="w-6 h-6 text-violet-600" />
+          </div>
+          <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-rose-600 mb-1">
+            Welcome Back
           </h2>
-          <p className="text-gray-500 mt-2">Sign in to your account.</p>
+          <p className="text-gray-600 text-sm">Please sign in to continue</p>
         </div>
 
-        {/* Form Fields Container */}
-        <div className="space-y-4">
+        {/* Error Message */}
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex items-center p-2 text-sm text-rose-800 rounded-xl bg-rose-100/90 border border-rose-300"
+          >
+            <XCircle className="w-4 h-4 mr-2" />
+            <span>{error}</span>
+          </motion.div>
+        )}
 
-          {/* 1. Email Input */}
+        {/* Form */}
+        <div className="space-y-3">
           <div className="relative">
-            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            {/* ⛔️ DO NOT CHANGE: onChange logic is preserved */}
+            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-violet-400" />
             <input
-              placeholder="Email Address"
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-150 text-gray-900"
+              type="email"
+              placeholder="Email"
+              className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-400 focus:border-violet-400 outline-none text-gray-900 text-sm shadow-inner"
               onChange={(e) => setForm({ ...form, email: e.target.value })}
+              disabled={loading}
             />
           </div>
 
-          {/* 2. Password Input */}
           <div className="relative">
-            <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            {/* ⛔️ DO NOT CHANGE: type and onChange logic are preserved */}
+            <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-violet-400" />
             <input
               type="password"
               placeholder="Password"
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-150 text-gray-900"
+              className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-400 focus:border-violet-400 outline-none text-gray-900 text-sm shadow-inner"
               onChange={(e) => setForm({ ...form, password: e.target.value })}
+              disabled={loading}
             />
           </div>
+
+          <a
+            href="#"
+            className="text-xs font-medium text-violet-600 hover:text-violet-700 hover:underline block text-right"
+          >
+            Forgot password?
+          </a>
         </div>
 
-        {/* 3. Login Button */}
-        {/* ⛔️ DO NOT CHANGE: onClick logic is preserved */}
-        <button
+        {/* Login Button */}
+        <motion.button
           onClick={handleLogin}
-          className="w-full mt-6 flex items-center justify-center space-x-2 py-3 px-4 border border-transparent rounded-lg shadow-md text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 transform hover:scale-[1.01]"
+          disabled={loading}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          className="w-full py-2 rounded-lg bg-gradient-to-r from-violet-600 to-rose-500 text-white font-semibold text-sm shadow-lg shadow-rose-300/50 hover:shadow-rose-400/60 flex items-center justify-center space-x-2 disabled:opacity-70"
         >
-          <LogIn className="w-5 h-5" />
-          <span>Login</span>
-        </button>
-        
-        {/* Footer/Link to Signup */}
-        <div className="mt-6 text-center text-sm text-gray-600">
-            Don't have an account? <a href="/signup" className="font-medium text-blue-600 hover:text-blue-500 hover:underline">Sign up here</a>
-        </div>
+          {loading ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin" />
+              <span>Logging in...</span>
+            </>
+          ) : (
+            <>
+              <LogIn className="w-4 h-4" />
+              <span>Login</span>
+            </>
+          )}
+        </motion.button>
 
-      </div>
+        {/* Footer */}
+        <div className="text-center text-xs text-gray-600">
+          Don’t have an account?
+          <a
+            href="/signup"
+            className="font-semibold text-rose-600 hover:text-violet-700 hover:underline ml-1"
+          >
+            Sign up
+          </a>
+        </div>
+      </motion.div>
     </div>
   );
 }

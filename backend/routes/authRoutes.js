@@ -10,8 +10,22 @@ const router = express.Router();
 router.post("/signup", async (req, res) => {
   try {
     const { name, email, password, userType } = req.body;
+
+    // ✅ Check if user already exists
     const exist = await User.findOne({ email });
     if (exist) return res.status(400).json({ message: "User already exists" });
+
+    // ✅ Restrict number of hosts to 2
+    if (userType === "host") {
+      const hostCount = await User.countDocuments({ userType: "host" });
+      if (hostCount >= 2) {
+        return res.status(403).json({
+          message: "you cant create account as a host",
+        });
+      }
+    }
+
+    // ✅ Hash password and create user
     const hashed = await bcrypt.hash(password, 10);
     await User.create({ name, email, password: hashed, userType });
 
@@ -40,7 +54,7 @@ router.post("/login", async (req, res) => {
     res.json({
       success: true,
       token,
-      user: { name: user.name, email: user.email, userType: user.userType }
+      user: { name: user.name, email: user.email, userType: user.userType },
     });
   } catch (err) {
     res.status(500).json({ message: err.message });

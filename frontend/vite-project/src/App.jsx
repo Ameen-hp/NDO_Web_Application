@@ -3,41 +3,99 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-// import UserDashboard from "./pages/UserDashboard";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Networks from "./pages/Networks";
 import Programs from "./pages/Programs";
-// import Approach from "./pages/Approach";
-// import Donate from "./pages/Donates";
 import Contact from "./pages/ContactDonate";
-import Gallery from "./pages/Gallery"
-// hostDashBoard
+import Gallery from "./pages/Gallery";
 import HostProjectForm from "./pages/HostProjectForm";
 import HostProjects from "./pages/HostProjects";
 import UserQueries from "./pages/UserQueries";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
+        {/* ✅ Public Routes */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/about" element={<About/>}></Route>
-        {/* <Route path="/approach" element={<Approach/>}></Route> */}
-        <Route path="/programs" element={<Programs/>}></Route>
-        <Route path="/networks" element={<Networks/>}></Route>
-        {/* <Route path="/donate" element={<Donate/>}> </Route> */}
-        <Route path="/gallery" element={<Gallery/>}></Route>
-        <Route path="/contact" element={<Contact/>}></Route>
-        <Route path="/hostFormPage" element={<HostProjectForm
-         />} />
-         <Route path="/hostProjects" element={<HostProjects
-         />} />
-         <Route path="/UserQueries" element={<UserQueries
-         />} />
+
+        {/* 🔒 All Other Routes Are Protected */}
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <ProtectedRoute>
+              <About />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/programs"
+          element={
+            <ProtectedRoute>
+              <Programs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/networks"
+          element={
+            <ProtectedRoute>
+              <Networks />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/gallery"
+          element={
+            <ProtectedRoute>
+              <Gallery />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <ProtectedRoute>
+              <Contact />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/hostFormPage"
+          element={
+            <ProtectedRoute>
+              <HostProjectForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/hostProjects"
+          element={
+            <ProtectedRoute>
+              <HostProjects />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/UserQueries"
+          element={
+            <ProtectedRoute>
+              <UserQueries />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

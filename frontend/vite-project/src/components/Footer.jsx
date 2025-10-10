@@ -79,7 +79,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { Icon: Facebook, link: "https://facebook.com/ndo", label: "Facebook" },
+    { Icon: Facebook, link: "https://www.facebook.com/profile.php?id=61568162452988", label: "Facebook" },
     { Icon: Twitter, link: "https://twitter.com/ndo", label: "Twitter (X)" },
     { Icon: Instagram, link: "https://instagram.com/ndo", label: "Instagram" },
     { Icon: Youtube, link: "https://youtube.com/ndo", label: "YouTube" },

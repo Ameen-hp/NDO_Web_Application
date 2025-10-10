@@ -72,58 +72,58 @@ export default function About() {
   const members = [
     {
       name: "Azra Memon",
-      designation: "President",
+      designation: "CEO Nari development org",
       qualification: "Post Graduation",
       experience: "15 Years",
       cnic: "41202-2462941-6",
       contact: "03443230529",
       message:
-        "As President, I am proud to lead an organization that uplifts women and fosters equality through rights-based initiatives.",
-      img: "/images/commityMembers/azra.jpg",
+        "As a  CEO at Nari development org, I am proud to lead an organization that uplifts women and fosters equality through rights-based initiatives.",
+      img: "/images/commityMembers/Azra.png",
     },
     {
-      name: "Asiya Shoaib",
-      designation: "Vice President",
+      name: "Nasreen babar",
+      designation: "Focal person AALTP NDO Center.",
       qualification: "Post Graduation",
       experience: "12 Years",
       cnic: "41202-6131381-8",
       contact: "03337078863",
       message:
-        "As Vice President, my mission is to strengthen community engagement and empower women through knowledge and opportunity.",
-      img: "/images/commityMembers/asiya.jpg",
+        "As  a Focal person AALTP  at  Nari Development Organization center., my mission is to strengthen community engagement and empower women through knowledge and opportunity.",
+      img: "/images/commityMembers/Nasreen.png",
     },
     {
       name: "Marie Baloch",
-      designation: "General Secretary",
+      designation: "Joint secretary Nari Development Organization",
       qualification: "Post Graduation",
       experience: "14 Years",
       cnic: "41202-0414495-4",
       contact: "03113405629",
       message:
-        "As General Secretary, I ensure transparent communication and smooth execution of NDO’s vision for social change.",
-      img: "/images/commityMembers/marie.jpg",
+        "As a  Joint secretary at Nari Development Organization, I ensure transparent communication and smooth execution of NDO’s vision for social change.",
+      img: "/images/commityMembers/Marie.png",
     },
-    {
-      name: "Anwar Khatoon",
-      designation: "Joint Secretary",
-      qualification: "Graduation",
-      experience: "8 Years",
-      cnic: "41203-7480593-2",
-      contact: "03443230529",
-      message:
-        "Serving as Joint Secretary allows me to coordinate efforts that bring positive transformation to rural communities.",
-      img: "/images/commityMembers/anwar.jpg",
-    },
+    // {
+    //   name: "Anwar Khatoon",
+    //   designation: "Joint Secretary",
+    //   qualification: "Graduation",
+    //   experience: "8 Years",
+    //   cnic: "41203-7480593-2",
+    //   contact: "03443230529",
+    //   message:
+    //     "Serving as Joint Secretary allows me to coordinate efforts that bring positive transformation to rural communities.",
+    //   img: "/images/commityMembers/anwar.jpg",
+    // },
     {
       name: "Tahira",
-      designation: "Treasurer",
+      designation: "Treasurer Nari development organization",
       qualification: "Post Graduation",
       experience: "12 Years",
       cnic: "41202-6026881-8",
       contact: "03110885896",
       message:
-        "As Treasurer, I’m committed to maintaining financial transparency and accountability for every project NDO undertakes.",
-      img: "/images/commityMembers/tahira.jpg",
+        "As a  Treasurer at Nari development organization, I’m committed to maintaining financial transparency and accountability for every project NDO undertakes.",
+      img: "/images/commityMembers/Tahira.png",
     },
   ];
 
@@ -255,20 +255,15 @@ export default function About() {
       {/* --- */}
 
       {/* 5. EXECUTIVE COMMITTEE SECTION (Rose Accents) */}
-     // NOTE: Make sure to import the required icons (like GraduationCap, Briefcase, etc.)
-// from a library like 'lucide-react' or similar.
+     {/* // NOTE: Make sure to import the required icons (like GraduationCap, Briefcase, etc.)
+// from a library like 'lucide-react' or similar. */}
 
 <section
   id="committee"
-  // Increased py for more space, changed background to a light, cool blue-gray
   className="relative py-32 bg-slate-50 overflow-hidden"
 >
-  {/* Background Pattern/Shape - More complex wave/blob */}
+  {/* Background Shape */}
   <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-    {/* Subtle texture/pattern overlay */}
-    <div className="absolute inset-0 bg-repeat opacity-5" style={{ backgroundImage: "url('data:image/svg+xml;base64,...')" /* A subtle noise or dot pattern */ }}></div>
-
-    {/* Dynamic SVG Wave Background - Using a more energetic gradient */}
     <svg
       viewBox="0 0 1440 320"
       xmlns="http://www.w3.org/2000/svg"
@@ -276,16 +271,14 @@ export default function About() {
     >
       <defs>
         <linearGradient id="vibrantGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          {/* Indigo to Pink */}
-          <stop offset="0%" style={{ stopColor: "rgba(99, 102, 241, 1)" }} /> {/* indigo-500 */}
-          <stop offset="100%" style={{ stopColor: "rgba(236, 72, 153, 1)" }} /> {/* pink-500 */}
+          <stop offset="0%" style={{ stopColor: "rgba(99, 102, 241, 1)" }} />
+          <stop offset="100%" style={{ stopColor: "rgba(236, 72, 153, 1)" }} />
         </linearGradient>
       </defs>
       <path
         fill="url(#vibrantGradient)"
-        fillOpacity="0.8" // Stronger opacity
-        // A more dramatic wave
-        d="M0,160L48,160C96,160,192,160,288,181.3C384,203,480,245,576,234.7C672,224,768,160,864,128C960,96,1056,96,1152,112C1248,128,1344,160,1392,176L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+        fillOpacity="0.8"
+        d="M0,160L48,160C96,160,192,160,288,181.3C384,203,480,245,576,234.7C672,224,768,160,864,128C960,96,1056,96,1152,112C1248,128,1344,160,1392,176L1440,192L1440,0L0,0Z"
       ></path>
     </svg>
   </div>
@@ -293,49 +286,46 @@ export default function About() {
   {/* Content */}
   <div className="container mx-auto px-6 relative z-10">
     <h2
-      className="text-6xl font-extrabold text-center text-indigo-700 mb-6 tracking-tighter" // Bigger, tighter tracking, new color
+      className="text-6xl font-extrabold text-center text-indigo-700 mb-6 tracking-tighter"
       data-aos="fade-up"
     >
       The <span className="text-pink-600">Executive</span> Council
     </h2>
+
     <p
-      className="text-center text-slate-600 max-w-4xl mx-auto text-xl mb-24 font-light italic" // Larger, lighter font, more max-width
+      className="text-center text-slate-600 max-w-4xl mx-auto text-xl mb-24 font-light italic"
       data-aos="fade-up"
       data-aos-delay="100"
     >
       "Visionary leadership drives our mission. Meet the highly qualified women
-      leaders who guide **NDO** toward impactful and sustainable change."
+      leaders who guide <b>NDO</b> toward impactful and sustainable change."
     </p>
 
-    {/* Cards Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-x-12 gap-y-16 justify-items-center">
+    {/* Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-10 gap-y-16 justify-items-center">
       {members.map((member, i) => (
         <div
           key={i}
-          // Lighter, slightly warmer bg. Stronger shadow, more aggressive hover effect
-          className="bg-white w-full max-w-lg rounded-xl shadow-2xl overflow-hidden border border-slate-200
-            transform transition duration-500 ease-out hover:scale-[1.03] hover:shadow-indigo-400/70 group"
+          className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden border border-slate-200 transform transition duration-500 ease-out hover:scale-[1.03] hover:shadow-indigo-400/70 group"
           data-aos="zoom-in"
           data-aos-delay={i * 150}
         >
-          {/* Image */}
-          <div className="relative h-80 w-full overflow-hidden rounded-t-xl">
-            {/* Added a subtle overlay for effect */}
-            <div className="absolute inset-0 bg-indigo-900/10 z-10"></div>
+          {/* Image Section */}
+          <div className="relative w-full h-96 sm:h-[420px] overflow-hidden bg-slate-100 flex justify-center items-center">
             <img
               src={member.img}
               alt={member.name}
-              // Changed object-cover to make the member stand out more, stronger hover
-              className="w-full h-full object-cover object-top transform transition duration-500 group-hover:scale-115"
+              className="w-auto h-full object-contain transition duration-500 ease-out group-hover:scale-105 group-hover:brightness-105"
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src =
-                  "https://placehold.co/500x500/A0AEC0/ffffff?text=MEMBER";
+                  'https://placehold.co/500x600/A0AEC0/ffffff?text=No+Image';
               }}
             />
-            {/* Designation badge - More modern pill shape */}
-            <div className="absolute bottom-[-1px] left-0 right-0 py-3 px-6 bg-pink-600/95 text-white text-center rounded-t-lg shadow-lg">
-              <p className="text-2xl font-bold tracking-wider uppercase">
+
+            {/* Designation Bar */}
+            <div className="absolute bottom-0 left-0 right-0 py-4 bg-pink-600/95 text-white text-center shadow-lg">
+              <p className="text-xl md:text-2xl font-semibold tracking-wide uppercase">
                 {member.designation}
               </p>
             </div>
@@ -343,13 +333,12 @@ export default function About() {
 
           {/* Info */}
           <div className="p-8 md:p-10 text-center">
-            <h3 className="text-4xl font-extrabold text-indigo-800 mb-6 mt-2 transition duration-300 group-hover:text-pink-500">
+            <h3 className="text-3xl md:text-4xl font-extrabold text-indigo-800 mb-6 mt-2 transition duration-300 group-hover:text-pink-500">
               {member.name}
             </h3>
 
-            {/* Member Details - Clean list look */}
+            {/* Member Details */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 text-left py-6 border-y border-slate-100 mb-8">
-              {/* Qualification */}
               <div className="flex items-start gap-3">
                 <GraduationCap className="w-6 h-6 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
@@ -362,7 +351,6 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Experience */}
               <div className="flex items-start gap-3">
                 <Briefcase className="w-6 h-6 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
@@ -375,7 +363,6 @@ export default function About() {
                 </div>
               </div>
 
-              {/* CNIC (Using a different icon for government ID/officiality) */}
               <div className="flex items-start gap-3">
                 <ShieldCheck className="w-6 h-6 text-indigo-500 flex-shrink-0 mt-0.5" />
                 <div>
@@ -388,7 +375,6 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Contact */}
               <div className="flex items-start gap-3">
                 <Phone className="w-6 h-6 text-indigo-500 flex-shrink-0 mt-0.5" />
                 <div>
@@ -402,13 +388,13 @@ export default function About() {
               </div>
             </div>
 
-            {/* Message - More focus on quote style */}
+            {/* Message */}
             <div className="relative p-6 bg-slate-50 rounded-xl shadow-inner border border-slate-200">
-                <Quote className="w-8 h-8 text-pink-400 absolute top-[-10px] left-[-10px] transform rotate-180 opacity-70" />
-                <p className="text-gray-700 italic text-lg leading-relaxed font-serif">
-                  {member.message}
-                </p>
-                <Quote className="w-8 h-8 text-pink-400 absolute bottom-[-10px] right-[-10px] opacity-70" />
+              <Quote className="w-8 h-8 text-pink-400 absolute top-[-10px] left-[-10px] transform rotate-180 opacity-70" />
+              <p className="text-gray-700 italic text-lg leading-relaxed font-serif">
+                {member.message}
+              </p>
+              <Quote className="w-8 h-8 text-pink-400 absolute bottom-[-10px] right-[-10px] opacity-70" />
             </div>
           </div>
         </div>

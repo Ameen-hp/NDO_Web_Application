@@ -1,13 +1,14 @@
 // server.js
 import express from "express";
 import dotenv from "dotenv";
+import { verifyToken } from "./middlware/AuthMidlware2.js"
 import path from "path";
 import cors from "cors";
 import connectDB from "./db/db.js";  // <-- imported from db file
 import authRoutes from "./routes/authRoutes.js";
 import AddProjectRoutes from "./routes/AddProjectRoutes.js"
 import ContactRoutes from "./routes/contactRoutes.js"
-dotenv.config({ path: "../.env" }); // 👈 this line is very important
+dotenv.config({ path: ".env" }); // 👈 this line is very important
 import {fileURLToPath} from "url"
 
 const app = express();
@@ -25,6 +26,7 @@ app.use(cors({
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve images
 
+// AuthRoute with no token if 
 //Auth Routes
 app.use("/api/auth", authRoutes);
 // add Project Routers
