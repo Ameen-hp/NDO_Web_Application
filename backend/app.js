@@ -19,26 +19,10 @@ const __dirname = path.dirname(__filename);
 
 
 
-const allowedOrigins = [
-  "http://localhost:5173",       // for local development
-  "http://129.154.242.48:5173",  // for hosted frontend
-];
+app.use(cors({
+  origin: "*",
+}));
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like Postman)
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.log("Blocked by CORS:", origin);
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-  })
-);
 
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve images
